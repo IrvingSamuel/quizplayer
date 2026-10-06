@@ -54,7 +54,7 @@ jobs:
         go: ['1.21', 'stable']
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         with:
           go-version: ${{ matrix.go }}
       - run: test -z "$(gofmt -l .)"
