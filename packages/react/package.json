@@ -1,0 +1,26 @@
+{
+  "name": "@quizplayer/react",
+  "version": "0.1.0",
+  "description": "React component for QuizPlayer — interactive video with embedded quizzes.",
+  "license": "MIT",
+  "author": "Irving Samuel",
+  "homepage": "https://github.com/IrvingSamuel/quizplayer#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/IrvingSamuel/quizplayer.git", "directory": "packages/react" },
+  "keywords": ["react", "video-player", "interactive-video", "quiz", "e-learning", "lms"],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "require": "./dist/index.cjs" }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts --clean --sourcemap --external react --external @quizplayer/core",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": { "@quizplayer/core": "^0.1.0" },
+  "peerDependencies": { "react": ">=17" }
+}

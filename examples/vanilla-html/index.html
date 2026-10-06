@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuizPlayer · vanilla HTML</title>
+  <style>body { max-width: 860px; margin: 40px auto; padding: 0 16px; font-family: system-ui, sans-serif; }</style>
+</head>
+<body>
+  <h1>QuizPlayer · vanilla HTML</h1>
+
+  <!-- Option A: zero JavaScript, declarative markup (auto-initialized) -->
+  <div data-quizplayer data-src="https://irvingsamuel.github.io/quizplayer/media/demo.mp4" data-locale="en" data-prevent-skip="true">
+    <script type="application/json">
+      [
+        { "id": "q1", "time": 6, "question": "What is 2 + 2?",
+          "options": [{ "id": "a", "text": "3" }, { "id": "b", "text": "4" }], "correct": "b" }
+      ]
+    </script>
+  </div>
+
+  <h2>Option B: JavaScript API</h2>
+  <div id="player"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@quizplayer/core@0/dist/quizplayer.min.js"></script>
+  <script>
+    const player = QuizPlayer.create('#player', {
+      src: 'https://irvingsamuel.github.io/quizplayer/media/demo.mp4',
+      quizzes: [
+        { id: 'colors', time: 6, question: 'Which color do you prefer?', options: ['Red', 'Green', 'Blue'] },
+        { id: 'capital', time: 18, question: 'Capital of Brazil?', options: ['Rio de Janeiro', 'Brasília', 'São Paulo'], correct: 1,
+          explanation: 'Brasília has been the capital since 1960.' },
+      ],
+      onAnswer: ({ record }) => console.log('answer', record),
+      onComplete: (results) => console.log('done', results),
+    });
+    player.on('seekblocked', (d) => console.log('seek blocked', d));
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+demo-dist/
+coverage/
+*.log
+.DS_Store
+.idea/
+.vscode/
+/vendor/
+/composer.lock
+/.phpunit.cache/

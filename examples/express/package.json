@@ -1,0 +1,10 @@
+{
+  "name": "quizplayer-example-express",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.mjs" },
+  "dependencies": {
+    "@quizplayer/server": "^0.1.0",
+    "express": "^4.21.0"
+  }
+}

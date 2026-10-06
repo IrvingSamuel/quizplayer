@@ -1,0 +1,33 @@
+name: 🐛 Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a bug!
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      multiple: true
+      options: ['@quizplayer/core', '@quizplayer/react', '@quizplayer/vue', '@quizplayer/server (Node)', 'PHP / Laravel', 'Go', 'Docs / demo']
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Minimal code, quiz JSON or a link (CodeSandbox, StackBlitz, repo).
+      render: html
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: 'QuizPlayer 0.1.0, Chrome 130, macOS / PHP 8.3, Laravel 11 / Go 1.23'

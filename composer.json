@@ -1,0 +1,62 @@
+{
+    "name": "quizplayer/quizplayer",
+    "description": "PHP backend for QuizPlayer — interactive video with embedded quizzes. Server-side answer validation, storage (PDO/Laravel) and a Blade component.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "quiz",
+        "video",
+        "interactive-video",
+        "video-player",
+        "laravel",
+        "blade",
+        "e-learning",
+        "lms"
+    ],
+    "homepage": "https://github.com/IrvingSamuel/quizplayer",
+    "authors": [
+        {
+            "name": "Irving Samuel",
+            "homepage": "https://github.com/IrvingSamuel"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/IrvingSamuel/quizplayer/issues"
+    },
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0",
+        "phpunit/phpunit": "^10.5 || ^11.0"
+    },
+    "suggest": {
+        "ext-pdo": "To use QuizPlayer\\Store\\PdoStore",
+        "laravel/framework": "To use the service provider, routes and <x-quizplayer> Blade component"
+    },
+    "autoload": {
+        "psr-4": {
+            "QuizPlayer\\": "php/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "QuizPlayer\\Tests\\": "php/tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "QuizPlayer\\Laravel\\QuizPlayerServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}

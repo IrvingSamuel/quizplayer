@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/IrvingSamuel/quizplayer/spec/answer.schema.json",
+  "title": "QuizPlayer answer exchange",
+  "$defs": {
+    "AnswerRequest": {
+      "type": "object",
+      "required": ["quizId", "optionId"],
+      "properties": {
+        "videoId": { "type": "string" },
+        "quizId": { "type": "string" },
+        "optionId": { "type": "string" },
+        "videoTime": { "type": "number", "minimum": 0 }
+      }
+    },
+    "AnswerResponse": {
+      "type": "object",
+      "required": ["correct"],
+      "properties": {
+        "correct": { "type": ["boolean", "null"] },
+        "correctOptionId": { "type": "string" },
+        "explanation": { "type": "string" }
+      }
+    },
+    "AnswerRecord": {
+      "type": "object",
+      "required": ["quizId", "optionId", "correct"],
+      "properties": {
+        "quizId": { "type": "string" },
+        "optionId": { "type": "string" },
+        "correct": { "type": ["boolean", "null"] },
+        "videoTime": { "type": "number" },
+        "answeredAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "AnswersResponse": {
+      "type": "object",
+      "required": ["answers"],
+      "properties": { "answers": { "type": "array", "items": { "$ref": "#/$defs/AnswerRecord" } } }
+    }
+  }
+}

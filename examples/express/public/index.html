@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuizPlayer · Express</title>
+  <style>body { max-width: 860px; margin: 40px auto; padding: 0 16px; font-family: system-ui, sans-serif; }</style>
+</head>
+<body>
+  <h1>QuizPlayer · Express backend</h1>
+  <div id="player"></div>
+  <pre id="results"></pre>
+  <script src="https://cdn.jsdelivr.net/npm/@quizplayer/core@0/dist/quizplayer.min.js"></script>
+  <script>
+    fetch('/lesson-1.json').then((r) => r.json()).then((quizzes) => {
+      QuizPlayer.create('#player', {
+        src: 'https://irvingsamuel.github.io/quizplayer/media/demo.mp4',
+        quizzes,                      // no "correct" field here
+        videoId: 'lesson-1',
+        endpoint: '/api/quizplayer',  // server validates + stores
+        preventSkip: true,
+        onComplete: (r) => (document.getElementById('results').textContent = JSON.stringify(r, null, 2)),
+      });
+    });
+  </script>
+</body>
+</html>

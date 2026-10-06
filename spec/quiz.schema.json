@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/IrvingSamuel/quizplayer/spec/quiz.schema.json",
+  "title": "QuizPlayer quizzes",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "time", "question", "options"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1, "description": "Stable identifier" },
+      "time": { "type": "number", "minimum": 0, "description": "Cue point in seconds" },
+      "question": { "type": "string", "minLength": 1 },
+      "options": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+          "type": "object",
+          "required": ["id", "text"],
+          "properties": {
+            "id": { "type": "string", "minLength": 1 },
+            "text": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "correct": { "type": "string", "description": "Id of the right option; omit for surveys or when the server validates" },
+      "explanation": { "type": "string" },
+      "audioUrl": { "type": "string", "format": "uri-reference" }
+    },
+    "additionalProperties": false
+  }
+}
